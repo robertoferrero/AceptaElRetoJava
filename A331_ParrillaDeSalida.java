@@ -17,6 +17,7 @@ public class A331_ParrillaDeSalida {
         
         Scanner entrada = new Scanner(System.in);
         
+        boolean impossible = false;
         while(true) {
             int casos = entrada.nextInt();
             if(casos==0) break;
@@ -25,25 +26,22 @@ public class A331_ParrillaDeSalida {
             int[] posicionsInicials = new int[casos];
             int[] posicionsFinals   = new int[casos];
             String[] pilots         = new String[casos];
-
-            boolean impossible = false;
+            boolean[] posInicialsRepetides = new boolean[26];
+            
+            
             for(int i=0;i<casos;i++) {
-                posicionsFinals[i] = entrada.nextInt();
-                posicionsFinals[i] += (i+1);
-                pilots[i]          = entrada.nextLine();
+                int millora = entrada.nextInt();
+                posicionsFinals[i]  = (i+1);
+                pilots[i]           = entrada.nextLine();
                 
-                if(posicionsFinals[i] > 26 || posicionsFinals[i] < 1) {                    
+                posicionsInicials[i] = posicionsFinals[i]+millora;
+                
+                if(posicionsInicials[i] > 26 || posicionsInicials[i] < 1 || posInicialsRepetides[posicionsInicials[i]-1])
                     impossible = true;                    
-                    break;
-                } else
-                    posicionsInicials[i] = posicionsFinals[i]+i+1;
-                    
+                else                    
+                    posInicialsRepetides[posicionsInicials[i]-1]=true;                                    
             }
-            
-            if(posicionsRepetides(posicionsInicials))
-                impossible=true;
-            
-            
+                        
             if (!impossible) {             
                 ordenar(posicionsInicials,pilots);
 
@@ -52,6 +50,7 @@ public class A331_ParrillaDeSalida {
             } else
                 System.out.println("IMPOSIBLE");
             System.out.println("-----");
+            impossible = false;
         }
     }
     
@@ -72,17 +71,5 @@ public class A331_ParrillaDeSalida {
         }
     }
     
-    static boolean posicionsRepetides(int[] pos) {
-        
-        boolean repetides = false;
-        for(int i=0;i<pos.length;i++)
-            for(int j=i+1;j<pos.length;j++) {
-                if(pos[i]==pos[j]) {
-                    repetides = true;
-                    break;
-                }
-            }
-        return repetides;
-                
-    }
+
 }
