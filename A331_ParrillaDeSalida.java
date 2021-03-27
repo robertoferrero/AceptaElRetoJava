@@ -36,7 +36,8 @@ public class A331_ParrillaDeSalida {
                 
                 posicionsInicials[i] = posicionsFinals[i]+millora;
                 
-                if(posicionsInicials[i] > 26 || posicionsInicials[i] < 1 || posInicialsRepetides[posicionsInicials[i]-1])
+                if(posicionsInicials[i] > 26 || posicionsInicials[i] < 1 || 
+                                   posInicialsRepetides[posicionsInicials[i]-1])
                     impossible = true;                    
                 else                    
                     posInicialsRepetides[posicionsInicials[i]-1]=true;                                    
