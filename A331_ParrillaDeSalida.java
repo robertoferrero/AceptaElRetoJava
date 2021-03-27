@@ -56,6 +56,7 @@ public class A331_ParrillaDeSalida {
     }
     
     
+    // Ordenació senzilla amb mètode de la bombolla
     static void ordenar(int[] posicions,String[] pilots) {
         for(int i=0;i<posicions.length-1;i++) {
             for(int j=0;j<posicions.length-i-1;j++) {
