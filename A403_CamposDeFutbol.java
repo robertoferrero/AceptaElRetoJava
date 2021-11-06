@@ -20,5 +20,6 @@ public class A403_CamposDeFutbol {
 			else
 				System.out.println("NO");
 		}
+        entrada.close();
 	}
 }
