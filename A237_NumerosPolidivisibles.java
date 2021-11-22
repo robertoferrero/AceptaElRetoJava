@@ -20,7 +20,6 @@ public class A237_NumerosPolidivisibles {
             	++longitud;
             	aux /= 10;
             }
-
             
             boolean polidivisible = true;
             while (longitud > 1 && polidivisible)
